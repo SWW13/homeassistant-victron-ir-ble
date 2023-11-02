@@ -1,0 +1,18 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "address": "[%key:common::config_flow::data::address%]",
+          "enckey": "[%key:common::config_flow::data::enckey%]"
+        }
+      }
+    },
+    "error": {
+      "unknown": "[%key:common::config_flow::error::unknown%]"
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+    }
+  }
+}
