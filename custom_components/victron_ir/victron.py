@@ -50,7 +50,12 @@ class VictronInstantReadoutData(BluetoothData):
             LOGGER.debug(f"No enckey set")
             return
 
-        sensor_data = device.parse(raw_data)
+        try:
+            sensor_data = device.parse(raw_data)
+        except ValueError as error:
+            LOGGER.debug(f"{model_name} failed to parse: {error}")
+            LOGGER.debug(f"raw decrypted data: {device.decrypt(raw_data)}")
+            return
 
         # convert sensor data to hassio
         if isinstance(sensor_data, SolarChargerData) or True:
