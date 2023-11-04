@@ -45,7 +45,7 @@ SENSOR_DESCRIPTIONS = {
         key=CHARGE_STATE,
         device_class=SensorDeviceClass.ENUM,
         native_unit_of_measurement=None,
-        state_class=SensorStateClass.MEASUREMENT,
+        state_class=None,
     ),
     (DeviceClass.ENERGY, Units.ELECTRIC_POTENTIAL_VOLT): SensorEntityDescription(
         key=f"{DeviceClass.ENERGY}_{Units.ELECTRIC_POTENTIAL_VOLT}",
