@@ -55,6 +55,10 @@ class VictronInstantReadoutData(BluetoothData):
         # convert sensor data to hassio
         if isinstance(sensor_data, SolarChargerData) or True:
             sensor_data: SolarChargerData
+            if sensor_data.get_solar_power() > 1500:
+                LOGGER.debug(f"invalid sensor_data: {sensor_data._data}")
+                LOGGER.debug(f"raw decrypted data: {device.decrypt(raw_data)}")
+                return
             self.update_sensor(
                 key=CHARGE_STATE,
                 device_class=CHARGE_STATE,
