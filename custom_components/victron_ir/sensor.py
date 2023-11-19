@@ -35,7 +35,7 @@ from sensor_state_data import (
     Units,
 )
 
-from .const import DOMAIN, CHARGE_STATE
+from .const import DOMAIN, CHARGE_STATE, STATE_OF_CHARGE, TIME_REMAINING, ALARM
 
 LOGGER = logging.getLogger(__name__)
 
@@ -71,6 +71,36 @@ SENSOR_DESCRIPTIONS = {
         native_unit_of_measurement=UnitOfPower.WATT,
         state_class=SensorStateClass.MEASUREMENT,
     ),
+    (DeviceClass.VOLTAGE, Units.ELECTRIC_POTENTIAL_VOLT): SensorEntityDescription(
+        key=f"{DeviceClass.VOLTAGE}_{Units.ELECTRIC_POTENTIAL_VOLT}",
+        device_class=SensorDeviceClass.VOLTAGE,
+        native_unit_of_measurement=UnitOfElectricPotential.VOLT,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    (DeviceClass.BATTERY, Units.PERCENTAGE): SensorEntityDescription(
+        key=STATE_OF_CHARGE,
+        device_class=SensorDeviceClass.BATTERY,
+        native_unit_of_measurement=Units.PERCENTAGE,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    (DeviceClass.DURATION, Units.TIME_MINUTES): SensorEntityDescription(
+        key=f"{TIME_REMAINING}_{Units.TIME_MINUTES}",
+        device_class=SensorDeviceClass.DURATION,
+        native_unit_of_measurement=Units.TIME_MINUTES,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    (DeviceClass.TEMPERATURE, Units.TEMP_KELVIN): SensorEntityDescription(
+        key=f"{DeviceClass.TEMPERATURE}_{Units.TEMP_KELVIN}",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=Units.TEMP_KELVIN,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    (ALARM, None): SensorEntityDescription(
+        key=ALARM,
+        device_class=SensorDeviceClass.ENUM,
+        native_unit_of_measurement=None,
+        state_class=None,
+    )
 }
 
 
