@@ -164,7 +164,9 @@ async def async_setup_entry(
 
 
 class VictronInstantReadoutEntity(
-    PassiveBluetoothProcessorEntity[PassiveBluetoothDataProcessor[float | int | None]],
+    PassiveBluetoothProcessorEntity[
+        PassiveBluetoothDataProcessor[bool | None, SensorUpdate]
+    ],
     SensorEntity,
 ):
     """Representation of a Victron Instant Readout BLE sensor."""
