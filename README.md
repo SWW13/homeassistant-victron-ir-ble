@@ -30,3 +30,13 @@ After a restart of Home Assistant, this integration is configurable by via "Add 
 To get there in one click, use this button:
 
 [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=victron_ir)
+
+## Configuring the device
+
+Configure the devices by adding victron integration manually from device configuration page.
+
+If this failes, you can try to manually add the device by editing `/homeassistant/.storage/core.config_entries` and appending:
+```
+{"created_at":"2025-01-10T09:07:13.234482+00:00","data":{},"disabled_by":null,"discovery_keys":{"bluetooth":[{"domain":"bluetooth","key":"$MyMacAddress","version":1}]},"domain":"victron_ir","entry_id":"01JH7QFDPJW0MH3GNPQT4J9H6X","minor_version":1,"modified_at":"2025-01-10T09:07:13.234500+00:00","options":{"enckey":"$MyEncryptionKey"},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"bluetooth","title":"Wooden","unique_id":"$MyMacAddress","version":1}
+```
+Note: Don't forget to replace `$MyMacAddress` and `$MyEncryptionKey` with the values of your device.
